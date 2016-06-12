@@ -1,3 +1,3 @@
 # Golang learning examples
 
-Repo contains all the examples I work on while learning Go.
+All the bits and bytes of code that I'm using to learn Golang with
