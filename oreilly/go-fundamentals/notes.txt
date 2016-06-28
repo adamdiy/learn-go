@@ -1,0 +1,3 @@
+- Welcome to class
+- Hello world
+- Typical go directory structure
