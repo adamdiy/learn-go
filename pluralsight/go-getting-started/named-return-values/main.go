@@ -1,6 +1,5 @@
 package main
 
-
 func main() {
 	numTerms, sum := add(1, 3, 5, 9)
 	println("Added:", numTerms, "terms for a total of", sum)
@@ -13,4 +12,3 @@ func add(terms ...int) (numTerms int, sum int) {
 	numTerms = len(terms)
 	return
 }
-
