@@ -1,8 +1,11 @@
 package main
 
 func main() {
-	mp := messagePrinter{"foo"}
-	mp.printMessage()
+	//mp := messagePrinter{"foo"}
+	//mp := enhancedMessagePrinter{"foo"}
+	emp := enhancedMessagePrinter{}
+	emp.message = "foo"
+	emp.printMessage()
 }
 
 type messagePrinter struct {
@@ -11,4 +14,8 @@ type messagePrinter struct {
 
 func (mp *messagePrinter) printMessage() {
 	println(mp.message)
+}
+
+type enhancedMessagePrinter struct {
+	messagePrinter
 }
