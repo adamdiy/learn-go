@@ -9,6 +9,7 @@ type Salutation struct {
 	greeting string
 }
 
+//Notice the Greet func accepts a do func with a string as a input
 func Greet(salutation Salutation, do func(string)) {
 	message, alternate := CreateMessage(salutation.name, salutation.greeting, "yo")
 	/*
@@ -33,8 +34,15 @@ func PrintLine(s string) {
 	fmt.Println(s)
 }
 
+func Printme(someString string) {
+	fmt.Println(someString)
+}
+
 func main() {
 	var s = Salutation{"Don", "Hello!"}
+	//passing a print fuction to the Greet function
 	Greet(s, Print)
+	//Greet(s, Printme("yabadaba"))
+	Printme("Yayaaaa")
 	
 }
