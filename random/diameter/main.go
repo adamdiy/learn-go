@@ -1,13 +1,18 @@
 package main
 
-import "fmt"
-
-const (
-	one_cm_mm  = 10.0
-	one_inch_cm = 2.54
+import (
+	"fmt"
 )
 
 func main() {
-	one_inch_in_mm := one_inch_cm / one_cm_mm * 100
-	fmt.Println(one_inch_in_mm)
+	//when would you need to choose a float64
+	var i float32
+
+	fmt.Print("Please enter the numeric value you want to convert: ")
+	_, err := fmt.Scan(&i)
+
+	//How come when I enter a string nothing happens?
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
 }
