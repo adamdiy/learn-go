@@ -17,9 +17,11 @@ func Greet(salutation Salutation) {
 }
 
 //3 //takes in name and greeting which are strings returns two strings
-func CreateMessage(name, greeting string) (message string, alternate string) {
+//greeting is a variadic function
+//greeting now becomes a slice
+func CreateMessage(name string, greeting ...string) (message string, alternate string) {
 	//return greeting + " " + name, "Hey!" + " " + name
-	message = greeting + " " + name
+	message = greeting[0] + " " + name
 	alternate = "Hey!" + " " + name
 	return
 }
