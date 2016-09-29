@@ -5,3 +5,7 @@
 #Function types
 
 - This is were it gets all muddled
+	- Passing a function = straight forward
+
+
+# Wrapping it up is closures. I think this is where I really get stumbled
