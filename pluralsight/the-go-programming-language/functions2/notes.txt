@@ -1,3 +1,5 @@
 # When the confusion starts
 
 - Multiple returns - It gets funky in this example
+
+#Function types
