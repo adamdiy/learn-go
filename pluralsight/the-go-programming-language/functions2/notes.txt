@@ -3,3 +3,5 @@
 - Multiple returns - It gets funky in this example
 
 #Function types
+
+- This is were it gets all muddled
