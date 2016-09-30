@@ -11,8 +11,8 @@ type Printer func(string) ()
 
 func Greet(salutation Salutation, do Printer, isFormal bool) {
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
-	if isFormal {
-		do(message)
+	if prefix := "Mr "; isFormal {
+		do(prefix + message)
 	}
 		do(alternate)
 }
