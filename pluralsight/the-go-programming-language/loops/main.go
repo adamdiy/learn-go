@@ -4,6 +4,6 @@ import "./greeting"
 
 func main() {
 	var s = greeting.Salutation{"012345678910", "Hello"}
-	greeting.Greet(s, greeting.CreatePrintFunction("!"), true, 5)
+	greeting.Greet(s, greeting.CreatePrintFunction("!"), true, 10)
 	//greeting.TypeSwitchTest(1.4)
 }
