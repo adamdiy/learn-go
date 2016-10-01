@@ -17,6 +17,12 @@ func Greet(salutation Salutation, do Printer, isFormal bool, times int) {
 		if i >= times {
 			break
 		}
+		//skips out of the loop and goes back to beginning.
+		if i % 2 == 0 {
+			i++
+			continue
+		}
+
 		if prefix := GetPrefix(salutation.Name); isFormal {
 			do(prefix + message)
 		} else {
