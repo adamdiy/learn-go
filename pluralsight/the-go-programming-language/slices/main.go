@@ -16,14 +16,17 @@ func main() {
 	*/
 
 	//short hand assignment
-	s := []int { "1, 10, 500, 25 }
-
+	//s := []int { "1, 10, 500, 25 }
 
 	slice := []greeting.Salutation {
 		{ "Bob", "Hello" },
 		{ "Joe", "Hi!" },
 		{ "Mary", "What is up?" },
 	}
+
+	//we want to extract joe so we specify the start index + end index
+	//slice = slice[1:2]
+	slice = slice[:2]
 
 	greeting.Greet(slice, greeting.CreatePrintFunction("!"), true, 150)
 	//greeting.TypeSwitchTest(1.4)
