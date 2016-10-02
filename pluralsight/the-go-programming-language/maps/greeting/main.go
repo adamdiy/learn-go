@@ -47,8 +47,12 @@ func GetPrefix(name string) (prefix string) {
 	prefixMap["Amy"] = "Dr. "
 	prefixMap["Mary"] = "Mrs. "
 	*/
+	if value, exists := prefixMap[name]; exists {
+		return value
+	}
 
-	return prefixMap[name]
+	//return prefixMap[name]
+	return "Dude "
 
 
 //	switch name {
