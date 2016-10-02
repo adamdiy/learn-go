@@ -11,7 +11,7 @@ func main() {
 	s[1] = 10
 	s[2] = 500
 	//should error out here.
-	s[3] = 20
+	//s[3] = 20
 
 
 	slice := []greeting.Salutation {
