@@ -26,8 +26,16 @@ func main() {
 
 	//we want to extract joe so we specify the start index + end index
 	//slice = slice[1:2]
-	slice = slice[:2]
+	//slice = slice[:2]
+	//slice = append(slice, greeting.Salutation{"Frank", "Heyo "})
+	//expand the slice with ...
+	//slice = append(slice, slice...)
+
+	//deleting
+	slice = append(slice[:1], slice[2:]... )
+
 
 	greeting.Greet(slice, greeting.CreatePrintFunction("!"), true, 150)
+
 	//greeting.TypeSwitchTest(1.4)
 }
