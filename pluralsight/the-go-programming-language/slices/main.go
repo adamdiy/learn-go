@@ -5,6 +5,7 @@ import "./greeting"
 func main() {
 	//var s = greeting.Salutation{"012345678910", "Hello"}
 
+	/*
 	var s []int
 	s = make([]int, 3)
 	s[0] = 1
@@ -12,6 +13,10 @@ func main() {
 	s[2] = 500
 	//should error out here.
 	//s[3] = 20
+	*/
+
+	//short hand assignment
+	s := []int { "1, 10, 500, 25 }
 
 
 	slice := []greeting.Salutation {
