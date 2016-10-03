@@ -7,18 +7,22 @@ type Salutation struct {
 	Greeting string
 }
 
+//new type that is a slice of salutations
+type Salutations []Salutation
 type Printer func(string) ()
 
-func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
-		for _, s := range salutation {
-			message, alternate := CreateMessage(s.Name, s.Greeting)
+//This is so weird.
+//turn function into a method
+func (salutations Salutations)Greet(do Printer, isFormal bool, times int) {
+	for _, s := range salutations {
+		message, alternate := CreateMessage(s.Name, s.Greeting)
 
-			if prefix := GetPrefix(s.Name); isFormal {
-				do(prefix + message)
-			} else {
-				do(alternate)
-			}
+		if prefix := GetPrefix(s.Name); isFormal {
+			do(prefix + message)
+		} else {
+			do(alternate)
 		}
+	}
 }
 
 func GetPrefix(name string) (prefix string) {
@@ -32,26 +36,27 @@ func GetPrefix(name string) (prefix string) {
 
 	prefixMap["Joe"] = "Jr. "
 	delete(prefixMap, "Mary")
+
 	if value, exists := prefixMap[name]; exists {
 		return value
 	}
 
 	return "Dude "
+}
 
 func TypeSwitchTest(x interface{}) {
 	switch x.(type) {
-	//switch t := x.(type) {
-		case int:
-			fmt.Println("int")
-		case float64:
-			fmt.Println("float")
-		case string:
-			fmt.Println("string")
-		case Salutation:
-			fmt.Println("salutation")
-		default:
-			fmt.Println("unknown")
-		}
+	case int:
+		fmt.Println("int")
+	case float64:
+		fmt.Println("float")
+	case string:
+		fmt.Println("string")
+	case Salutation:
+		fmt.Println("salutation")
+	default:
+		fmt.Println("unknown")
+	}
 }
 
 func CreateMessage(name, greeting string) (message string, alternate string) {
@@ -71,7 +76,6 @@ func PrintLine(s string) {
 func PrintCustom(s string, custom string) {
 	fmt.Println(s + custom)
 }
-
 func CreatePrintFunction(custom string) Printer {
 	return func(s string) {
 		fmt.Println(s + custom)
