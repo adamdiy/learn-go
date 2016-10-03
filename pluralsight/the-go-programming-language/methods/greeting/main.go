@@ -23,12 +23,6 @@ func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
 
 func GetPrefix(name string) (prefix string) {
 
-	//declare a map called prefixMap which is of type map which has a key and a value of type string.
-	//var prefixMap map[string]string
-	//initialize the map
-	//prefixMap = make(map[string]string)
-
-	//cleaning up map to do all
 	prefixMap := map[string]string {
 		"Bob" : "Mr. ",
 		"Joe" : "Dr. ",
@@ -36,46 +30,14 @@ func GetPrefix(name string) (prefix string) {
 		"Mary" : "Mrs. ",
 	}
 
-	//Assign new value for map value
 	prefixMap["Joe"] = "Jr. "
-
 	delete(prefixMap, "Mary")
-
-	/*
-	prefixMap["Bob"] = "Mr. "
-	prefixMap["Joe"] = "Dr. "
-	prefixMap["Amy"] = "Dr. "
-	prefixMap["Mary"] = "Mrs. "
-	*/
 	if value, exists := prefixMap[name]; exists {
 		return value
 	}
 
-	//return prefixMap[name]
 	return "Dude "
 
-
-//	switch name {
-/*
-	switch {
-		case name == "Bob": 
-			prefix = "Mr "
-		case name == "Joe", name == "Amy", len(name) == 10:
-			if name == "Amy" {
-				prefix = "Boss woman "
-			} else {
-				prefix = "Boss man "
-			}
-		case name == "Mary": 
-			prefix = "Mrs "
-		default: 
-			prefix = "Sup Dude "
-	}
-	return
-	*/
-}
-
-//empty interface
 func TypeSwitchTest(x interface{}) {
 	switch x.(type) {
 	//switch t := x.(type) {
@@ -109,6 +71,7 @@ func PrintLine(s string) {
 func PrintCustom(s string, custom string) {
 	fmt.Println(s + custom)
 }
+
 func CreatePrintFunction(custom string) Printer {
 	return func(s string) {
 		fmt.Println(s + custom)
