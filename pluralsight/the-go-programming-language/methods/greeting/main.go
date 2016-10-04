@@ -7,6 +7,10 @@ type Salutation struct {
 	Greeting string
 }
 
+type Renameable interface {
+	Rename(newName string)
+}
+
 func (salutation *Salutation) Rename(newName string) {
 	salutation.Name = newName
 }
