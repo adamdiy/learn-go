@@ -3,6 +3,7 @@ package main
 import (
 	"./greeting"
 	_"time"
+	"fmt"
 )
 
 func RenameToFrog(r greeting.Renameable) {
@@ -16,20 +17,12 @@ func main() {
 		{ "Joe", "Hi!" },
 		{ "Mary", "What is up?" },
 	}
-	salutations[0].Rename("John")
-	//dereference = get the address of
-	RenameToFrog(&salutations[0])
 
-	done := make(chan bool)
+	fmt.Fprintf(&salutations[0], "The count is %d", 10)
 
-	//Kick off independent thread with this
-	go func() {
-		salutations.Greet( greeting.CreatePrintFunction("<C>"), true, 6)
-		done <- true
-	}()
-	salutations.Greet( greeting.CreatePrintFunction("!"), true, 6)
-	//time.Sleep(100 * time.Millisecond)
-	<- done
-	//slice = append(slice[:1], slice[2:]... )
-	//greeting.Greet(salutations, greeting.CreatePrintFunction("!"), true, 150)
+	c := make(chan greeting.Salutation)
+	// Call a goroutine that will fill the channel
+	for s := range c {
+		fmt.Println(s.Name)
+	}
 }
