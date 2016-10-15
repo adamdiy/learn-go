@@ -7,14 +7,26 @@ import (
 )
 
 func main() {
-	http.ListenAndServe(":8080", http.FileServer(http.Dir("public")))
+	templates := populateTemplates()
+	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+		requestedFile := req.URL.Path[1:]
+		template := templates.Lookup(requestedFile + ".html")
+
+		if template != nil {
+			template.Execute(w, nil)
+		} else {
+			w.WriteHeader(404)
+		}
+	})
+	http.ListenAndServe(":8080", nil)
 }
+
 
 //This pointer is coming from the "text/templates" package
 func populateTemplates() *template.Template {
 	result := template.New("templates")
 
-	basePath := "templatess"
+	basePath := "templates"
 	templateFolder, _ := os.Open(basePath)
 	defer templateFolder.Close()
 
