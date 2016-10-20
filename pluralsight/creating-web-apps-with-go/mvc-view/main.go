@@ -9,10 +9,10 @@ import (
 func main() {
 	templates := populateTemplates()
 	http.HandleFunc("/",
+
 	func(w http.ResponseWriter, req *http.Request) {
 		requestedFile := req.URL.Path[1:]
-		template :=
-		templates.Lookup(requestedFile + ".html")
+		template := templates.Lookup(requestedFile + ".html")
 
 		if template != nil {
 			template.Execute(w, nil)
