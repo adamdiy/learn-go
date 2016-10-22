@@ -8,7 +8,7 @@ import (
 
 func main() {
 	templates := populateTemplates()
-	http.HandleFunc("/", 
+	http.HandleFunc("/",
 		func(w http.ResponseWriter, req *http.Request) {
 		requestedFile := req.URL.Path[1:]
 		template := 
@@ -20,7 +20,7 @@ func main() {
 				w.WriteHeader(404)
 			}
 		})
-		http.ListenAndServe(":8080", nil)
+		http.ListenAndServe(":8000", nil)
 }
 
 func populateTemplates() *template.Template {
