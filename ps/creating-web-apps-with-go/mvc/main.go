@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"os"
 	"text/template"
+	"bufio"
+	"strings"
 )
 
 func main() {
@@ -21,6 +23,18 @@ func main() {
 			}
 		})
 		http.ListenAndServe(":8000", nil)
+}
+
+func serveResource(w http.ResponseWriter, req *http.Request) {
+	path := "public" + req.URL.Path
+	var contentType string
+	if strings.HasSuffix(path, ".css") {
+		contentType = "text/css"
+	} else if strings.HasSuffix(path, ".png") {
+		contentType = "image/png"
+	} else {
+		contentType = "text/plan"
+	}
 }
 
 func populateTemplates() *template.Template {
