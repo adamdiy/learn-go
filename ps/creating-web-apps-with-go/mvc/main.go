@@ -6,6 +6,7 @@ import (
 	"text/template"
 	"bufio"
 	"strings"
+	"./viewmodels"
 )
 
 func main() {
@@ -16,8 +17,12 @@ func main() {
 		template := 
 			templates.Lookup(requestedFile + ".html")
 
+			var context interface{} = nil
+			if requestedFile == "home" {
+				context = viewmodels.GetHome()
+			}
 			if template != nil {
-				template.Execute(w, nil)
+				template.Execute(w, context)
 			} else {
 				w.WriteHeader(404)
 			}
