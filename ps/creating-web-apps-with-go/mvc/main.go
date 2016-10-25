@@ -23,8 +23,8 @@ func main() {
 			}
 		})
 
-		http.HandleFunc("/img", serveResource)
-		http.HandleFunc("/css", serveResource)
+		http.HandleFunc("/img/", serveResource)
+		http.HandleFunc("/css/", serveResource)
 
 		http.ListenAndServe(":8000", nil)
 }
