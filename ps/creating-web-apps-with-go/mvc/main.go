@@ -22,6 +22,10 @@ func main() {
 				w.WriteHeader(404)
 			}
 		})
+
+		http.HandleFunc("/img", serveResource)
+		http.HandleFunc("/css", serveResource)
+
 		http.ListenAndServe(":8000", nil)
 }
 
@@ -33,7 +37,19 @@ func serveResource(w http.ResponseWriter, req *http.Request) {
 	} else if strings.HasSuffix(path, ".png") {
 		contentType = "image/png"
 	} else {
-		contentType = "text/plan"
+		contentType = "text/plain"
+	}
+
+	f, err := os.Open(path)
+
+	if err == nil {
+		defer f.Close()
+		w.Header().Add("Content-Type", contentType)
+
+		br := bufio.NewReader(f)
+		br.WriteTo(w)
+	} else {
+		w.WriteHeader(404)
 	}
 }
 
