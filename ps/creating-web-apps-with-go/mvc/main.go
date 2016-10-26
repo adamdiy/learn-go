@@ -18,11 +18,16 @@ func main() {
 			templates.Lookup(requestedFile + ".html")
 
 			var context interface{} = nil
+			/*
 			switch requestedFile {
 			case "home":
 				context = viewmodels.GetHome()
 			case "categories":
 				context = viewmodels.GetCategories()
+			}
+			*/
+			if requestedFile == "home" {
+				context = viewmodels.GetHome()
 			}
 			if template != nil {
 				template.Execute(w, context)
