@@ -14,7 +14,5 @@ func GetHome() Home {
 		Title: "Lemonade Stand Society - dk",
 		Active: "Home",
 	}
-
 	return result
-
 }
