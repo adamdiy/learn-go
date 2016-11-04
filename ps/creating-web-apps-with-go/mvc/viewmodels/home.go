@@ -9,6 +9,7 @@ type Home struct {
 	Active string
 }
 
+//helper fuction that returns Home viewmodel
 func GetHome() Home {
 	result := Home {
 		Title: "Lemonade Stand Society - dk",
