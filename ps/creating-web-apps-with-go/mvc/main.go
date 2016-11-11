@@ -7,7 +7,16 @@ import (
 	"bufio"
 	"strings"
 	"./viewmodels"
+	"log"
 )
+
+//implement http logging package
+func Log(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("%s %s %s", r.RemoteAddr, r.Method, r.URL)
+		handler.ServeHTTP(w, r)
+	})
+}
 
 func main() {
 	templates := populateTemplates()
@@ -36,7 +45,8 @@ func main() {
 		http.HandleFunc("/img/", serveResource)
 		http.HandleFunc("/css/", serveResource)
 
-		http.ListenAndServe(":8000", nil)
+		//http.ListenAndServe(":8000", nil)
+		http.ListenAndServe(":8000", Log(http.DefaultServeMux))
 }
 
 func serveResource(w http.ResponseWriter, req *http.Request) {
